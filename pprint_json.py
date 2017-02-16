@@ -3,12 +3,12 @@ import argparse
 import sys
 
 
-def load_data(filepath):
-    pass
+def load_data(datafile):
+    return json.load(datafile) 
 
 
 def pretty_print_json(data, outfile):
-    pass
+    json.dump(data, outfile, indent=4, ensure_ascii=False)
 
 
 def get_parser():
@@ -16,7 +16,7 @@ def get_parser():
     parser.add_argument('infile', type=argparse.FileType('r'),
                         help='file contataining json to pretty print')
     parser.add_argument('-o', '--outfile', type=argparse.FileType('w'), 
-                        default=sys.stdin,
+                        default=sys.stdout,
                         help='file to output pretty json into ')
     return parser
 
